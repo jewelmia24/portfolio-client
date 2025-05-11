@@ -12,7 +12,7 @@ const gwendolyn = Gwendolyn({
   subsets: ["latin"],
   weight: ["400", "700"], // Gwendolyn supports 400 & 700
 });
-const menu = ["Home", "Project", "Blogs", "Contact"];
+const menu = ["Home",'Skills', "Project", "Blogs", "Contact"];
 
 const Navbar = () => {
   const { setTheme, resolvedTheme } = useTheme();
@@ -24,8 +24,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky to-0% z-50 ">
-      <div className=" md:max-w-[90%] xl:max-w-[75%] mx-4 md:mx-auto py-2.5 ">
+    <div className="sticky top-0 z-50 bg-opacity-90 backdrop-blur-3xl shadow-xs ">
+      <div className=" md:max-w-[90%] xl:max-w-[75%] mx-7 md:mx-auto py-2.5 ">
         {/* decstop view */}
         <div className="hidden lg:flex justify-between items-center">
           <Link href={"/"}>
@@ -35,16 +35,17 @@ const Navbar = () => {
               Jewel
             </h1>
           </Link>
-          <ul className="flex justify-between gap-5 items-center">
+          <ul className="flex justify-between font-medium gap-5 items-center">
             {menu.map((item, index) => (
-              <Link href={`#${item}`} key={index}>
+              <Link href={`#${item}`} key={index} className=" relative group ">
                 {item}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </ul>
           <div className="flex items-center gap-2 ">
-            <Button variant={"outline"}>Download Resume</Button>
-            <Button onClick={handleToggleTheme} variant={"ghost"} size="icon">
+            <Button className="cursor-pointer" variant={"outline"}>Download Resume</Button>
+            <Button className="cursor-pointer" onClick={handleToggleTheme} variant={"ghost"} size="icon">
               {resolvedTheme === "light" ? (
                 <Moon size={32} />
               ) : (
@@ -64,7 +65,7 @@ const Navbar = () => {
                 Jewel
               </h1>
             </Link>
-            <Button onClick={handleToggleTheme} variant={"ghost"} size="icon">
+            <Button className="cursor-pointer" onClick={handleToggleTheme} variant={"ghost"} size="icon">
               {resolvedTheme === "light" ? (
                 <Moon size={32} />
               ) : (
@@ -76,13 +77,13 @@ const Navbar = () => {
         {/* blur bg */}
         {isOpen && (
           <div
-            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-xs transition-opacity opacity-50 duration-300"
+            className="fixed inset-0 z-50 h-[100vh] bg-black/20 backdrop-blur-2xl transition-opacity opacity-50 duration-300"
             onClick={()=>setIsOpen(false)}
           />
         )}
         {/* mobile & tablet menu */}
         <div
-          className={`lg:hidden fixed top-0 left-0 w-[50%] bg-background shadow-xl z-50 transition-transform duration-300 ease-in-out ${
+          className={`lg:hidden fixed top-0 left-0 w-[60%] sm:w-[50%] md:w-[30%] bg-background shadow-xl z-50 transition-transform duration-300 ease-in-out ${
             isOpen
               ? "translate-x-0 mt-9 ml-4 rounded-md"
               : "-translate-x-full "
@@ -100,7 +101,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Separator className="mb-2"/>
-            <Button variant="outline" onClick={() => setIsOpen(false)}>
+            <Button className="cursor-pointer" variant="outline" onClick={() => setIsOpen(false)}>
               Download Resume
             </Button>
             <X className="absolute right-3 top-3" onClick={()=>setIsOpen(!isOpen)}/>

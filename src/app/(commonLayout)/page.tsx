@@ -1,9 +1,12 @@
+import Banner from "@/components/banner/Banner";
+import Skills from "@/components/skills/Skills";
 
 
 export default function Home() {
   return (
     <div className="text-4xl">
-      this is next js 
+      <Banner />
+      <Skills/>
     
     
     </div>

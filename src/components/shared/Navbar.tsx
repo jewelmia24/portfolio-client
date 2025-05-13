@@ -44,7 +44,7 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex items-center gap-2 ">
-            <Button className="cursor-pointer" variant={"outline"}>Download Resume</Button>
+            <Button  className="cursor-pointer">Download Resume</Button>
             <Button className="cursor-pointer" onClick={handleToggleTheme} variant={"ghost"} size="icon">
               {resolvedTheme === "light" ? (
                 <Moon size={32} />
@@ -65,7 +65,7 @@ const Navbar = () => {
                 Jewel
               </h1>
             </Link>
-            <Button className="cursor-pointer" onClick={handleToggleTheme} variant={"ghost"} size="icon">
+            <Button className="cursor-pointer hover:bg-transparent" onClick={handleToggleTheme} variant={"ghost"} size="icon">
               {resolvedTheme === "light" ? (
                 <Moon size={32} />
               ) : (
